@@ -97,3 +97,28 @@ If you want to use original pretrained weights for YOLOv3:
 6. The training strategy is for reference only. Adjust it according to your dataset and your goal. And add further strategy if needed.
 
 7. For speeding up the training process with frozen layers train_bottleneck.py can be used. It will compute the bottleneck features of the frozen model first and then only trains the last layers. This makes training on CPU possible in a reasonable time. See [this](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html) for more information on bottleneck features.
+
+## 安装
+
+依赖:
+
+	pip install tensorflow_gpu keras pillow matplotlib
+
+程序下载和生成：
+
+	git clone https://github.com/qqwweee/keras-yolo3.git
+	cd keras-yolo3
+
+如果使用yolov3.weights转换：
+
+	wget https://pjreddie.com/media/files/yolov3.weights
+	python convert.py yolov3.cfg yolov3.weights model_data/yolo.h5
+
+如果使用yolov3-tiny.weights转换：
+
+	wget https://pjreddie.com/media/files/yolov3-tiny.weights
+	python convert.py yolov3-tiny.cfg yolov3-tiny.weights model_data/yolo-tiny.h5
+
+增加从摄像头实时获取图像并且检测：
+
+	yolo_camera.py 和 yolo_tiny_camera.py
